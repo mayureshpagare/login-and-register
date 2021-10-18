@@ -1,6 +1,6 @@
 from databaseoperations import *
 from tkinter import *
-import tkinter.messagebox
+from tkinter import messagebox
 
 
 # Functions
@@ -9,10 +9,18 @@ def clear():
     entry2.delete(0,END)
 
 
-#def register():
-    # register
-    # Register function creates the login  ID and passsword and adds it to the sql database attached
-
+def register():
+    userid = entry1.get()
+    password = entry2.get()
+    if userid != "" and password != "":
+        result = insert_data(userid, password)
+        if result:
+            messagebox.showinfo("Register", "Successfully.")
+        else:
+            messagebox.showerror("Register", "Error: Please try to register again!")
+    else:
+        messagebox.showwarning("Register", "Error: Please enter UserID and Password.")
+        
 
 # GUI
 

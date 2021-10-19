@@ -10,9 +10,19 @@ def create_table():
     connection.close()
     
 
-# def insert_data(userid, password):
-    
-    # This function adds new data as ID and Password to the database
+def insert_data(userid, password):
+    connection = psycopg2.connect(dbname="login", host="localhost", user="postgres", password="mayuresh", port="5432")
+    cursor = connection.cursor()
+    searchquery = '''INSERT INTO logindata (userid, password) VALUES(%s, %s)'''
+    try:
+        cursor.execute(searchquery, (userid, password))
+        cursor.close()
+        connection.commit()
+        connection.close()
+        return True
+    except:
+        connection.close()
+        return False
 
 def searchdata(userid, password):
     connection = psycopg2.connect(dbname="login", host="localhost", user="postgres", password="mayuresh", port="5432")

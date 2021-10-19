@@ -1,10 +1,14 @@
 # import psycopg2
 
 
-# def create_table():
+def create_table():
+    connection = psycopg2.connect(dbname="login", host="localhost", user="postgres", password="mayuresh", port="5432")
+    cursor = connection.cursor()
+    cursor.execute('''CREATE TABLE logindata(userid text,password text)''')
+    print("Table Created")
+    connection.commit()
+    connection.close()
     
-    # This function creates a new table in the database
-
 
 # def insert_data(userid, password):
     

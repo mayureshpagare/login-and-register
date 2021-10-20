@@ -9,7 +9,12 @@ def clear():
     entry2.delete(0,END)
 
 
-#def register():
+def register():
+    response = tkinter.messagebox.askokcancel("Confirm","Are You sure about submitting details??")
+    if response:
+        insert_data(entry1.get(), entry2.get())
+    else:
+        clear()
     # register
     # Register function creates the login  ID and passsword and adds it to the sql database attached
 
